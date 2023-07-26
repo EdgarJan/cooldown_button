@@ -8,12 +8,12 @@ class CooldownButton extends StatefulWidget {
   final String text;
   final String confirmText;
 
-  const CooldownButton({
-    Key? key, 
-    required this.onConfirm,
-    required this.text,
-    required this.confirmText
-  }) : super(key: key);
+  const CooldownButton(
+      {Key? key,
+      required this.onConfirm,
+      required this.text,
+      required this.confirmText})
+      : super(key: key);
 
   @override
   State<CooldownButton> createState() => _CooldownButtonState();
@@ -61,5 +61,6 @@ class _CooldownButtonState extends State<CooldownButton> {
   void onEndCooldown() {
     setState(() {
       onCooldown = false;
+    });
   }
 }
