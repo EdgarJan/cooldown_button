@@ -59,10 +59,8 @@ class _CooldownButtonState extends State<CooldownButton> {
   }
 
   void onEndCooldown() {
-    if (mounted) {
-      setState(() {
-        onCooldown = false;
-      });
-    }
+    setState(() {
+      onCooldown = false;
+    });
   }
 }
