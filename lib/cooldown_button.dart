@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badge;
-import 'package:flutter_countdown_timer/countdown_timer_controller.dart';
 import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
@@ -23,27 +22,14 @@ class CooldownButton extends StatefulWidget {
 class _CooldownButtonState extends State<CooldownButton> {
   int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 5;
   bool onCooldown = false;
-  CountdownTimerController? controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller =
-        CountdownTimerController(endTime: endTime, onEnd: onEndCooldown);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    controller?.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return badge.Badge(
       showBadge: onCooldown,
       badgeContent: CountdownTimer(
-        controller: controller,
+        endTime: endTime,
+        onEnd: onEndCooldown,
         widgetBuilder: (_, CurrentRemainingTime? time) {
           if (time == null) {
             return Container();
@@ -57,7 +43,6 @@ class _CooldownButtonState extends State<CooldownButton> {
           if (!onCooldown) {
             startCooldown();
           } else {
-            controller?.dispose();
             widget.onConfirm();
           }
         },
@@ -68,9 +53,8 @@ class _CooldownButtonState extends State<CooldownButton> {
 
   void startCooldown() {
     setState(() {
+      endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 5;
       onCooldown = true;
-      controller =
-          CountdownTimerController(endTime: endTime, onEnd: onEndCooldown);
     });
   }
 
