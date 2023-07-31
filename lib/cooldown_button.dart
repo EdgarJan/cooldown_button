@@ -33,6 +33,12 @@ class _CooldownButtonState extends State<CooldownButton> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    controller?.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return badge.Badge(
       showBadge: onCooldown,
@@ -62,7 +68,6 @@ class _CooldownButtonState extends State<CooldownButton> {
 
   void startCooldown() {
     setState(() {
-      endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 5;
       onCooldown = true;
       controller =
           CountdownTimerController(endTime: endTime, onEnd: onEndCooldown);
