@@ -1,6 +1,6 @@
 name: cooldown_button
 publish_to: none
-version: 0.3.3
+version: 0.3.4
 
 environment:
   sdk: '>=3.0.6 <4.0.0'

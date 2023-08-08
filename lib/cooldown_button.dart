@@ -3,16 +3,24 @@ import 'package:badges/badges.dart' as badge;
 import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
+enum ButtonType {
+  elevated,
+  text,
+}
+
 class CooldownButton extends StatefulWidget {
   final Function onConfirm;
   final String text;
   final String confirmText;
+  final ButtonType buttonType;
 
   const CooldownButton(
       {Key? key,
       required this.onConfirm,
       required this.text,
-      required this.confirmText})
+      required this.confirmText,
+      this.buttonType = ButtonType.elevated} // Default value
+      )
       : super(key: key);
 
   @override
@@ -38,16 +46,15 @@ class _CooldownButtonState extends State<CooldownButton> {
           }
         },
       ),
-      child: ElevatedButton(
-        onPressed: () {
-          if (!onCooldown) {
-            startCooldown();
-          } else {
-            widget.onConfirm();
-          }
-        },
-        child: Text(onCooldown ? widget.confirmText : widget.text),
-      ),
+      child: widget.buttonType == ButtonType.elevated
+          ? ElevatedButton(
+              onPressed: onPressed,
+              child: buttonText(),
+            )
+          : TextButton(
+              onPressed: onPressed,
+              child: buttonText(),
+            ),
     );
   }
 
@@ -64,5 +71,17 @@ class _CooldownButtonState extends State<CooldownButton> {
         onCooldown = false;
       });
     }
+  }
+
+  onPressed() {
+    if (!onCooldown) {
+      startCooldown();
+    } else {
+      widget.onConfirm();
+    }
+  }
+
+  Text buttonText() {
+    return Text(onCooldown ? widget.confirmText : widget.text);
   }
 }
