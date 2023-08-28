@@ -10,8 +10,8 @@ enum ButtonType {
 
 class CooldownButton extends StatefulWidget {
   final Function onConfirm;
-  final Text text;
-  final Text confirmText;
+  final Widget text;
+  final Widget confirmText;
   final ButtonType buttonType;
 
   const CooldownButton(
@@ -81,7 +81,7 @@ class _CooldownButtonState extends State<CooldownButton> {
     }
   }
 
-  Text buttonText() {
+  Widget buttonText() {
     return onCooldown ? widget.confirmText : widget.text;
   }
 }
