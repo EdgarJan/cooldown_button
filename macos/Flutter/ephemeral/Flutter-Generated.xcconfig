@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=C:\tools\flutter
-FLUTTER_APPLICATION_PATH=C:\developer\cooldown_button
+FLUTTER_ROOT=/usr/local/Caskroom/flutter/3.13.0/flutter
+FLUTTER_APPLICATION_PATH=/Users/edgarjanvuicik/Developer/cooldown_button
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=0.3.5

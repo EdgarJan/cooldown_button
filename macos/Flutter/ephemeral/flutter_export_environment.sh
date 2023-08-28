@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\tools\flutter"
-export "FLUTTER_APPLICATION_PATH=C:\developer\cooldown_button"
+export "FLUTTER_ROOT=/usr/local/Caskroom/flutter/3.13.0/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/edgarjanvuicik/Developer/cooldown_button"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=0.3.5"
