@@ -15,13 +15,12 @@ class CooldownButton extends StatefulWidget {
   final ButtonType buttonType;
 
   const CooldownButton(
-      {Key? key,
+      {super.key,
       required this.onConfirm,
       required this.text,
       required this.confirmText,
-      this.buttonType = ButtonType.elevated} // Default value
-      )
-      : super(key: key);
+      this.buttonType = ButtonType.elevated}
+      );
 
   @override
   State<CooldownButton> createState() => _CooldownButtonState();
