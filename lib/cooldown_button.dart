@@ -72,7 +72,7 @@ class _CooldownButtonState extends State<CooldownButton> {
     }
   }
 
-  onPressed() {
+  void onPressed() {
     if (!onCooldown) {
       startCooldown();
     } else {
