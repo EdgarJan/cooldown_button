@@ -34,16 +34,22 @@ class _CooldownButtonState extends State<CooldownButton> {
   Widget build(BuildContext context) {
     return badge.Badge(
       showBadge: onCooldown,
-      badgeContent: CountdownTimer(
-        endTime: endTime,
-        onEnd: onEndCooldown,
-        widgetBuilder: (_, CurrentRemainingTime? time) {
-          if (time == null) {
-            return Container();
-          } else {
-            return Text('${time.sec}');
-          }
-        },
+      // badges 4 draws the badge with package:material_ui, which cannot see
+      // this app's package:flutter/material Theme. Give the countdown the
+      // app's body text style, as the badge's Material did in badges 3.
+      badgeContent: DefaultTextStyle(
+        style: Theme.of(context).textTheme.bodyMedium!,
+        child: CountdownTimer(
+          endTime: endTime,
+          onEnd: onEndCooldown,
+          widgetBuilder: (_, CurrentRemainingTime? time) {
+            if (time == null) {
+              return Container();
+            } else {
+              return Text('${time.sec}');
+            }
+          },
+        ),
       ),
       child: widget.buttonType == ButtonType.elevated
           ? ElevatedButton(

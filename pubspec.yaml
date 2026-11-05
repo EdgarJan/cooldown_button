@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  badges: 3.2.0
+  badges: 4.0.1
   flutter_countdown_timer: 4.1.0
 
 dev_dependencies:
